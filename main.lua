@@ -1,4 +1,8 @@
+-- main.lua - basically stitch together all the scripts --
+
 player = require("player")
+fps = require("ui/fps")
+require("libs/colorize")
 
 function getCenterPos(x,y,w,h)p={}p["x"]=x+(w/2)p["y"]=y+(h/2)return p end
 
@@ -22,5 +26,5 @@ end
 
 function love.draw()
     player.draw()
+    fps.draw()
 end
---#ffd88a
