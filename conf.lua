@@ -1,3 +1,4 @@
 function love.conf(t)
-    t.window.title = "My Game"
+    version = "1.0.0"
+    t.window.title = "Survival Game v"..version
 end
