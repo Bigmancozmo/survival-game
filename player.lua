@@ -1,12 +1,11 @@
 -- lol it's so hard to locate bugs in this code
--- oh well at least good player functionality requires
--- lots of code!
+-- oh well at least good player functionality requires lots of code!
 
 player = {}
 
 require("libs/colorize")
 require("libs/extensions")
-local healthReqquire = require("ui/health")
+local healthRequire = require("ui/health")
 
 edge = false
 up = love.keyboard.isDown("up")
@@ -23,20 +22,20 @@ function player.checkPlayerBounds(position,winSize,plrSize)
     l = false
     d = false
     r = false
-    if(position["x"] < 0) then
-        position["x"] = 0
+    if(plrPosition["x"] < 0) then
+        plrPosition["x"] = 0
         l = true
     end
-    if(position["x"] > winSize["w"] - plrSize) then
-        position["x"] = winSize["w"] - plrSize
+    if(plrPosition["x"] > winSize["w"] - plrSize) then
+        plrPosition["x"] = winSize["w"] - plrSize
         r = true
     end
-    if(position["y"] < 0) then
-        position["y"] = 0
+    if(plrPosition["y"] < 0) then
+        plrPosition["y"] = 0
         u = true
     end
-    if(position["y"] > winSize["h"] - plrSize) then
-        position["y"] = winSize["h"] - plrSize
+    if(plrPosition["y"] > winSize["h"] - plrSize) then
+        plrPosition["y"] = winSize["h"] - plrSize
         d = true
     end
     if u or l or d or r then
@@ -92,6 +91,19 @@ function player.playerUpdate(position,speed,winSize,plrSize)
 
     player.checkPlayerBounds(position,winSize,plrSize)
     player.checkCollisions(position,plrSize)
+
+    if health < 1 then
+        resetPlayerVariables()
+        health = 100
+        plrPosition = {}
+    winSize = {}
+    plrSize = 40
+    winSize["w"] = 800
+    winSize["h"] = 600
+    speed = 4
+    plrPosition["x"] = winSize["w"] / 2 - plrSize / 2
+    plrPosition["y"] = winSize["h"] / 2 - plrSize / 2
+    end
 end
 function player.checkCollisionAt(x,y,w,h,position,plrSize)
     isCollidingWithAnObject = false
@@ -140,7 +152,7 @@ function player.draw(healthNum)
     -- Basic box
     love.graphics.setColor(hex("#ffd88a")); -- Tan. Will later be the user's choice of color.
     love.graphics.rectangle("fill",plrPosition["x"],plrPosition["y"],plrSize,plrSize);
-    healthReqquire.draw(healthNum,plrPosition["x"] - 12.5,plrPosition["y"] - 15)
+    healthRequire.draw(healthNum,plrPosition["x"] - 12.5,plrPosition["y"] - 15)
 
     -- Clothes
     love.graphics.setColor(hex("#382500")); -- Brown

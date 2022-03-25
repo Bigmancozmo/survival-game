@@ -1,0 +1,26 @@
+Changelog as of Oct. 29, 2021.
+Many of these say "1.0.0" since I'm still building off of it,
+and the game is not done yet.
+These may not be up-to-date in the Windows version, since I use
+Mac so Mac gets updates more often and sooner. Windows just takes
+some time to upload this game for, so and it is much much simpler
+on just Mac.
+This changelog is in order from when the updates were made.
+
+--1.0.0 (Oct. 29, 2021) Script Organization
+-Moved Menu and Game code into their own scripts, outside of main.lua.
+Known Issues:
+-Game does an error after hitting due to the script change, and it no longer knew what some of the variables were.
+
+--1.0.0 (Oct. 31, 2021) Patch
+-Fixed the issue caused in the previous update.
+
+--1.0.0 (Oct. 31, 2021) Patch
+-Fixed a bug created in the previous patch which caused the game to not work.
+
+--1.0.0 (Dec. 20, 2021) Add Feature, Replace Feature
+-Added autosave
+-Replace Save button with Menu button
+
+--1.0.0 (Mar. 25, 2022) Patch
+-Patched an error when saving. You may have to delete your save file, sorry!
